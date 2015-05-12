@@ -18,7 +18,7 @@ This package provides 3 functions to minimize a function under a regularization 
 
 The function and regularization definitions are provided by the package `EmpiricalRisks`, see [here](https://github.com/lindahua/EmpiricalRisks.jl).
 
-Install with : `Pkg.add("ReverseDiffSource")`
+Install with : `Pkg.add("ForwardBackwardOptim")`
 
 Example:
 ```julia
@@ -38,14 +38,13 @@ y = float64( y .> 0.5 )
 # Define model (see EmpiricalRisks.jl)
 model = riskmodel(LinearPred(Np), LogisticLoss())
 
-# Launch optimization with L2 regularization
+# Launch optimization with L2 regularization, run for 100 steps
 θ2 = fasta(model, 
           zeros(Np), x, y, 
           reg      = SqrL2Reg(10.0), # regularizer definition
-          maxsteps = 100,            # maximum number of steps
-          maxtime  = 10)             # maximum runtime 10 sec
+          maxsteps = 100)             # maximum runtime 10 sec
 
-# with L1 regularization and optimization trace every 10 steps
+# with L1 regularization, optimization trace every 10 steps, stop running after 100 steps or 10 sec runtime
 θ1 = fasta(model, 
           zeros(Np), x, y, 
           reg        = L1Reg(10.0), # regularizer definition
