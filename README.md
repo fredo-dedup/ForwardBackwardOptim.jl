@@ -12,9 +12,9 @@ Latest (Julia nightly & release) [![Build Status](https://travis-ci.org/fredo-de
 
 
 This package provides 3 functions to minimize a function under a regularization constraint:
-    - `fbs()` for the standard forward-backward splitting with a constant, user-supplied, step size
-    - `fista()` for the accelerated forward-backward splitting (with a constant, user-supplied, step size)
-    - `fasta()` for the accelerated forward-backward splitting with adaptative step size and backtracking
+- `fbs()` for the standard forward-backward splitting with a constant, user-supplied, step size
+- `fista()` for the accelerated forward-backward splitting (with a constant, user-supplied, step size)
+- `fasta()` for the accelerated forward-backward splitting with adaptative step size and backtracking
 
 The function and regularization definitions are provided by the package `EmpiricalRisks`, see [here](https://github.com/lindahua/EmpiricalRisks.jl).
 
@@ -45,10 +45,11 @@ model = riskmodel(LinearPred(Np), LogisticLoss())
           maxsteps = 100,            # maximum number of steps
           maxtime  = 10)             # maximum runtime 10 sec
 
-# with L1 regularization
+# with L1 regularization and optimization trace every 10 steps
 θ1 = fasta(model, 
           zeros(Np), x, y, 
-          reg      = L1Reg(10.0), # regularizer definition
-          maxsteps = 100,         # maximum number of steps
-          maxtime  = 10)          # maximum runtime 10 sec
+          reg        = L1Reg(10.0), # regularizer definition
+          maxsteps   = 100,         # maximum number of steps
+          maxtime    = 10,          # maximum runtime 10 sec
+          cbinterval = 10)
 ```
