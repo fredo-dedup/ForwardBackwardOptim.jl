@@ -13,3 +13,4 @@ for t in tests
     include(tfile)
 end
 
+println("Finished testing.")

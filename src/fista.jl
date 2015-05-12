@@ -51,7 +51,7 @@ function fista!{T<:FloatingPoint}(
 
         # callback
         if cbinterval > 0 && t % cbinterval == 0
-            callback(t, θ, v_risk, value(reg, θ), λ, α)
+            callback(t, θ, v_risk, value(reg, θ), α)
         end
     end
 

@@ -31,7 +31,7 @@ function fbs!{T<:FloatingPoint}(
 
         # callback
         if cbinterval > 0 && t % cbinterval == 0
-            callback(t, θ, v_risk, value(reg, θ), λ)
+            callback(t, θ, v_risk, value(reg, θ))
         end
     end
 
