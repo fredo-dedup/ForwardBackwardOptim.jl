@@ -23,8 +23,8 @@ model = m.riskmodel(m.LinearPred(Np), m.LogisticLoss())
 θ3 = m.fasta(model, zeros(Np), x, y, 
              reg=m.SqrL2Reg(10.0), λ=1e-3, maxsteps=100, maxtime=10)
 
-@test sumabs2(θ1-θ2) < 1e-4
-@test sumabs2(θ2-θ3) < 1e-4
+@test sumabs2(θ1-θ2) < 1e-2
+@test sumabs2(θ2-θ3) < 1e-2
 
 θ1 = m.fbs(model, zeros(Np), x, y, 
            reg=m.L1Reg(10.0), λ=2e-3, maxsteps=1000, maxtime=10, cbinterval=1000)
@@ -33,8 +33,8 @@ model = m.riskmodel(m.LinearPred(Np), m.LogisticLoss())
 θ3 = m.fasta(model, zeros(Np), x, y, 
              reg=m.L1Reg(10.0), λ=1e-3, maxsteps=100, maxtime=10, cbinterval=100)
 
-@test sumabs2(θ1-θ2) < 1e-4
-@test sumabs2(θ2-θ3) < 1e-4
+@test sumabs2(θ1-θ2) < 1e-2
+@test sumabs2(θ2-θ3) < 1e-2
 
 
 # fbs!(riskmodel(LinearPred(Np), MyLoss()), zeros(Np), x, y, 
