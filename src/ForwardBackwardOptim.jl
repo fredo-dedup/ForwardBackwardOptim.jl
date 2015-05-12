@@ -1,6 +1,5 @@
 module ForwardBackwardOptim
 
-using Compat
 using Reexport
 @reexport using EmpiricalRisks
 
