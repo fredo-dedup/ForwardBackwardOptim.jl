@@ -9,8 +9,7 @@ Np = 50
 Nobs = 10000
 x = randn(Np, Nobs)
 u = vec(θ0' * x) + 0.1randn(Nobs)
-y = 1 ./ (1. + exp(-u))
-y = map(Float64, y .> 0.5 )
+y = ( 1 ./ (1. + exp(-u)) .> 0.5 ) + 0.
 
 
 # convergence comparisons
